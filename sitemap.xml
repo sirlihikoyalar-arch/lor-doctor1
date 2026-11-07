@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <!-- Asosiy sahifa -->
+  <url>
+    <loc>https://drulmas.uz/</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- 1. LOR 24/7 Shoshilinch xizmat -->
+  <url>
+    <loc>https://drulmas.uz/lor-24-7</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 2. Septoplastika (Burun to'sig'i egriligini davolash) -->
+  <url>
+    <loc>https://drulmas.uz/septoplastika</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 3. Gaymorit va Sinusit (FESS endoskopik jarrohlik) -->
+  <url>
+    <loc>https://drulmas.uz/gaymorit-sinusit</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 4. Bolalarda Adenoid va Adenotomiya -->
+  <url>
+    <loc>https://drulmas.uz/bolalar-adenoid-adenotomiya</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- 5. Tonzillit va Bodomcha bezlari (Angina) -->
+  <url>
+    <loc>https://drulmas.uz/surunkali-tonzillit</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 6. Otit va Quloq pardasi plastikasi (Timpanoplastika) -->
+  <url>
+    <loc>https://drulmas.uz/otit-timpanoplastika</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 7. Rinoplastika (Estetik va funksional burun operatsiyasi) -->
+  <url>
+    <loc>https://drulmas.uz/rinoplastika</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 8. Vazomotor va Allergik Rinit (Radiochastotali vazotomiya) -->
+  <url>
+    <loc>https://drulmas.uz/vazomotor-rinit</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 9. 3D KT va Endoskopik LOR diagnostika -->
+  <url>
+    <loc>https://drulmas.uz/3d-kt-diagnostika</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- 10. Quloq shang'illashi va eshitish pasayishi -->
+  <url>
+    <loc>https://drulmas.uz/eshitish-qobiliyatini-tiklash</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 11. Shifokor haqida va Grand Medikal Markazi -->
+  <url>
+    <loc>https://drulmas.uz/shifokor-haqida</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 12. Qabulga yozilish va Aloqa -->
+  <url>
+    <loc>https://drulmas.uz/qabulga-yozilish</loc>
+    <lastmod>2026-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
