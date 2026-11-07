@@ -123,14 +123,51 @@
       transform: translateY(-1px);
     }
 
-    /* HERO SECTION (FAQAT RASM VA ALOQA TUGMALARI) */
+    /* HERO SECTION */
     .hero-section {
-      padding: 24px 0 20px 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      padding: 24px 0 30px 0;
     }
 
+    .hero-grid {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 24px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 5px 12px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-title {
+      font-size: 1.6rem;
+      line-height: 1.25;
+      font-weight: 800;
+      margin-bottom: 12px;
+      background: linear-gradient(135deg, #ffffff 0%, #bae6fd 60%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: #cbd5e1;
+      margin-bottom: 18px;
+    }
+
+    /* DOCTOR PHOTO (TOZA RASM VA SKANER) */
     .doctor-image-wrapper {
       width: 100%;
       max-width: 380px;
@@ -156,9 +193,7 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 8px;
-      margin: 20px 0 10px 0;
-      width: 100%;
-      max-width: 580px;
+      margin: 18px 0;
     }
 
     .btn-card {
@@ -166,11 +201,11 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 11px 12px;
+      padding: 10px 12px;
       border-radius: 12px;
       color: #ffffff;
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 700;
       border: 1px solid rgba(255, 255, 255, 0.12);
       transition: transform 0.2s ease, opacity 0.2s ease;
@@ -191,8 +226,8 @@
     }
 
     .btn-card svg {
-      width: 17px;
-      height: 17px;
+      width: 16px;
+      height: 16px;
       fill: currentColor;
       flex-shrink: 0;
     }
@@ -644,6 +679,21 @@
 
     /* NOUTBUK VA DESKTOP (min-width: 1024px) */
     @media (min-width: 1024px) {
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-desc {
+        font-size: 1rem;
+      }
+      .doctor-image-wrapper {
+        max-width: 100%;
+      }
       .stats-row {
         grid-template-columns: repeat(4, 1fr);
         gap: 16px;
@@ -660,7 +710,6 @@
       }
       .actions-grid {
         grid-template-columns: repeat(5, 1fr);
-        max-width: 780px;
       }
       .chat-popup {
         right: 30px;
@@ -687,68 +736,81 @@
 
   <div class="container">
 
-    <!-- HERO SECTION (FAQAT RASM VA ALOQA TUGMALARI) -->
+    <!-- HERO SECTION -->
     <section class="hero-section">
-      <!-- TOZA SHIFOKOR FOTO VA SKANER -->
-      <div class="doctor-image-wrapper">
-        <div class="doctor-image-card">
-          <img src="photo_2026-11-07_18-36-44.jpg" alt="Dr. Ulmasbek Vahobjonovich - LOR Vrach, Otorinolaringolog">
+      <div class="hero-grid">
+        
+        <!-- MATN VA TUGMALAR -->
+        <div>
+          <div class="hero-badge">🏥 Grand Medikal Markazi · Navoiy</div>
+          <h1 class="hero-title">Quloq, burun va tomoq davosida aniq tashxis, ishonchli natija</h1>
+          <p class="hero-desc">
+            LOR-xirurg Dr. Ulmasbek Vahobjonovich boshchiligidagi amaliyot — zamonaviy diagnostika, endoskopik xirurgik yechimlar va g'amxo'r munosabat bitta joyda, kattalardan tortib bolalargacha.
+          </p>
+
+          <!-- TUGMALAR -->
+          <div class="actions-grid">
+            <a href="tel:+998995958406" class="btn-card btn-call">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+              Qo'ng'iroq
+            </a>
+            <a href="https://t.me/dr_ulmas" target="_blank" rel="noopener" class="btn-card btn-tg">
+              <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
+              Telegram
+            </a>
+            <a href="https://instagram.com/dr._ulmas" target="_blank" rel="noopener" class="btn-card btn-insta">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+            <a href="mailto:hayitov8427@mail.ru" class="btn-card btn-email">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              Email
+            </a>
+            <a href="https://maps.google.com/?q=Grand+Medikal+Center+Navoiy" target="_blank" rel="noopener" class="btn-card btn-map">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+              Manzil
+            </a>
+          </div>
+        </div>
+
+        <!-- DOCTOR SURATI (HECH QANDAY ORTIQCHA YOZUVSIZ, TOZA QR KODLI FOTO) -->
+        <div class="doctor-image-wrapper">
+          <div class="doctor-image-card">
+            <img src="photo_2026-11-07_18-36-44.jpg" alt="Dr. Ulmasbek Vahobjonovich - LOR Vrach, Otorinolaringolog">
+          </div>
+        </div>
+
+      </div>
+
+      <!-- STATISTIKA KO'RSATKICHLARI -->
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Yil Tajriba</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">12,000+</div>
+          <div class="stat-label">Muvaffaqiyatli Operatsiya</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">9</div>
+          <div class="stat-label">Asosiy Yo'nalish</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">99%</div>
+          <div class="stat-label">Mamnun Bemorlar</div>
         </div>
       </div>
 
-      <!-- ALOQA TUGMALARI -->
-      <div class="actions-grid">
-        <a href="tel:+998995958406" class="btn-card btn-call">
-          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-          Qo'ng'iroq
-        </a>
-        <a href="https://t.me/dr_ulmas" target="_blank" rel="noopener" class="btn-card btn-tg">
-          <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
-          Telegram
-        </a>
-        <a href="https://instagram.com/dr._ulmas" target="_blank" rel="noopener" class="btn-card btn-insta">
-          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-          Instagram
-        </a>
-        <a href="mailto:hayitov8427@mail.ru" class="btn-card btn-email">
-          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          Email
-        </a>
-        <a href="https://maps.google.com/?q=Grand+Medikal+Center+Navoiy" target="_blank" rel="noopener" class="btn-card btn-map">
-          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          Manzil
-        </a>
+      <!-- 24/7 SHOSHILINCH YORDAM BANNERI -->
+      <div class="emergency-banner">
+        <div>
+          <h3>🚨 24/7 Shoshilinch LOR Xizmati</h3>
+          <p>Tunda, dam olish va bayram kunlari ham shoshilinch qabul — favqulodda holatda kutish shart emas.</p>
+        </div>
+        <a href="tel:+998995958406" class="emergency-btn">Hoziroq bog'laning</a>
       </div>
     </section>
-
-    <!-- STATISTIKA KO'RSATKICHLARI -->
-    <div class="stats-row">
-      <div class="stat-card">
-        <div class="stat-number">15+</div>
-        <div class="stat-label">Yil Tajriba</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">12,000+</div>
-        <div class="stat-label">Muvaffaqiyatli Operatsiya</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">9</div>
-        <div class="stat-label">Asosiy Yo'nalish</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-number">99%</div>
-        <div class="stat-label">Mamnun Bemorlar</div>
-      </div>
-    </div>
-
-    <!-- 24/7 SHOSHILINCH YORDAM BANNERI -->
-    <div class="emergency-banner">
-      <div>
-        <h3>🚨 24/7 Shoshilinch LOR Xizmati</h3>
-        <p>Tunda, dam olish va bayram kunlari ham shoshilinch qabul — favqulodda holatda kutish shart emas.</p>
-      </div>
-      <a href="tel:+998995958406" class="emergency-btn">Hoziroq bog'laning</a>
-    </div>
 
     <!-- 9 TA ASOSIY YO'NALISH -->
     <section>
