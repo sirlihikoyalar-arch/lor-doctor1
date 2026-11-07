@@ -5,7 +5,7 @@
   <title>Dr. Ulmasbek Vahobjonovich | Otorinolaringolog, LOR-Xirurg</title>
   <meta name="description" content="Navoiyda zamonaviy LOR xizmati: Dr. Ulmasbek Vahobjonovich boshchiligidagi endoskopik LOR-xirurgiya, septoplastika, gaymorit, adenoid va 24/7 qabul.">
   <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   
   <!-- Google Search Console Tasdiqlash Kodi -->
@@ -23,78 +23,99 @@
       --primary-cyan: #06b6d4;
       --accent: #2563eb;
       --dark-bg: #070d18;
-      --card-bg: rgba(15, 23, 42, 0.75);
-      --glass-border: rgba(56, 189, 248, 0.2);
+      --card-bg: rgba(15, 23, 42, 0.85);
+      --glass-border: rgba(56, 189, 248, 0.25);
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
     }
 
-    * {
+    *, *::before, *::after {
       box-sizing: border-box;
-      transition: all 0.25s ease-in-out;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
       scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
     }
 
     body {
-      margin: 0;
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--dark-bg);
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--dark-bg);
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(2, 132, 199, 0.2) 0px, transparent 40%),
-        radial-gradient(circle at 85% 75%, rgba(6, 182, 212, 0.15) 0px, transparent 40%);
+        radial-gradient(circle at 10% 10%, rgba(2, 132, 199, 0.18) 0px, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.14) 0px, transparent 40%);
       background-attachment: fixed;
       color: var(--text-main);
+      line-height: 1.5;
       overflow-x: hidden;
+      word-wrap: break-word;
     }
 
     .container {
-      max-width: 1140px;
+      width: 100%;
+      max-width: 1180px;
       margin: 0 auto;
       padding: 0 16px;
     }
 
-    /* TOP BAR / NAV */
+    /* NAVBAR */
     .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
+      width: 100%;
+      background: rgba(7, 13, 24, 0.95);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border-bottom: 1px solid var(--glass-border);
       position: sticky;
       top: 0;
-      background: rgba(7, 13, 24, 0.9);
-      backdrop-filter: blur(15px);
       z-index: 100;
+    }
+
+    .navbar-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      gap: 12px;
     }
 
     .nav-brand {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       text-decoration: none;
-      color: #fff;
+      min-width: 0;
+    }
+
+    .brand-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
     }
 
     .brand-title {
-      font-size: 1.25rem;
+      font-size: 1.05rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #fff 0%, #38bdf8 100%);
+      letter-spacing: -0.3px;
+      background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .nav-contact-btn {
       background: var(--primary);
-      color: white;
+      color: #ffffff;
       text-decoration: none;
-      padding: 9px 18px;
+      padding: 8px 14px;
       border-radius: 50px;
-      font-size: 0.88rem;
+      font-size: 0.8rem;
       font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background 0.2s ease, transform 0.2s ease;
     }
 
     .nav-contact-btn:hover {
@@ -104,96 +125,96 @@
 
     /* HERO SECTION */
     .hero-section {
-      padding: 40px 0 30px 0;
+      padding: 24px 0 30px 0;
     }
 
     .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 30px;
-      align-items: center;
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 24px;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
+      gap: 6px;
+      font-size: 0.75rem;
       font-weight: 700;
       color: #38bdf8;
       background: rgba(56, 189, 248, 0.12);
       border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 50px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
     }
 
     .hero-title {
-      font-size: 2.2rem;
+      font-size: 1.6rem;
       line-height: 1.25;
       font-weight: 800;
-      margin: 0 0 15px 0;
+      margin-bottom: 12px;
       background: linear-gradient(135deg, #ffffff 0%, #bae6fd 60%, #38bdf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .hero-desc {
-      font-size: 1rem;
-      line-height: 1.6;
+      font-size: 0.92rem;
+      line-height: 1.55;
       color: #cbd5e1;
-      margin-bottom: 25px;
+      margin-bottom: 18px;
     }
 
-    /* DOCTOR PHOTO CARD (YANGILANGAN VA TO'G'RILANGAN STANDART) */
+    /* DOCTOR PHOTO CARD */
     .doctor-image-wrapper {
-      max-width: 420px;
-      margin: 0 auto;
       width: 100%;
+      max-width: 380px;
+      margin: 0 auto;
     }
 
     .doctor-image-card {
       position: relative;
-      border-radius: 28px;
+      border-radius: 22px;
       overflow: hidden;
-      border: 2px solid var(--glass-border);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 25px rgba(2, 132, 199, 0.2);
+      border: 1.5px solid var(--glass-border);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6);
       background: #0b1329;
-      aspect-ratio: 4 / 5; /* Ideal shifokor portreti proporsiyasi */
+      aspect-ratio: 4 / 5;
     }
 
     .doctor-image-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: top center; /* Yuz qismi doimo markazda va to'liq ko'rinadi */
+      object-position: top center;
       display: block;
     }
 
     .doctor-badge-overlay {
       position: absolute;
-      bottom: 12px;
-      left: 12px;
-      right: 12px;
-      background: rgba(15, 23, 42, 0.88);
-      backdrop-filter: blur(14px);
+      bottom: 10px;
+      left: 10px;
+      right: 10px;
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--glass-border);
-      border-radius: 18px;
-      padding: 12px 16px;
+      border-radius: 14px;
+      padding: 10px 14px;
       text-align: left;
     }
 
     .doctor-badge-overlay h4 {
-      margin: 0 0 2px 0;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
+      font-weight: 700;
       color: #fff;
+      margin-bottom: 2px;
     }
 
     .doctor-badge-overlay p {
-      margin: 0;
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: #38bdf8;
       font-weight: 600;
     }
@@ -201,272 +222,263 @@
     /* ACTION BUTTONS GRID */
     .actions-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 10px;
-      margin: 25px 0;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin: 18px 0;
     }
 
     .btn-card {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      color: #fff;
+      gap: 6px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: #ffffff;
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       font-weight: 700;
       border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-card:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
     }
 
     .btn-call { background: linear-gradient(135deg, #10b981 0%, #059669 100%); }
     .btn-tg { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
     .btn-insta { background: linear-gradient(135deg, #e11d48 0%, #be123c 100%); }
     .btn-email { background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%); }
-    .btn-map { background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); }
+    .btn-map { 
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); 
+      grid-column: span 2;
+    }
 
     .btn-card svg {
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       fill: currentColor;
+      flex-shrink: 0;
     }
 
     /* STATS COUNTERS */
     .stats-row {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin: 35px 0;
+      gap: 10px;
+      margin: 24px 0;
     }
 
     .stat-card {
       background: var(--card-bg);
       border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 20px 15px;
+      border-radius: 16px;
+      padding: 14px 10px;
       text-align: center;
     }
 
     .stat-number {
-      font-size: 2.1rem;
+      font-size: 1.6rem;
       font-weight: 800;
       color: #38bdf8;
-      line-height: 1;
-      margin-bottom: 6px;
+      line-height: 1.1;
+      margin-bottom: 4px;
     }
 
     .stat-label {
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
 
-    /* 24/7 EMERGENCY BANNER */
+    /* EMERGENCY BANNER */
     .emergency-banner {
-      background: linear-gradient(135deg, rgba(2, 132, 199, 0.2) 0%, rgba(37, 99, 235, 0.25) 100%);
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(37, 99, 235, 0.25) 100%);
       border: 1px solid #38bdf8;
-      border-radius: 22px;
-      padding: 24px;
+      border-radius: 18px;
+      padding: 18px;
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 12px;
       align-items: center;
       text-align: center;
-      margin: 35px 0;
+      margin: 24px 0;
+    }
+
+    .emergency-banner h3 {
+      font-size: 1.1rem;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .emergency-banner p {
+      font-size: 0.82rem;
+      color: #cbd5e1;
+      line-height: 1.4;
     }
 
     .emergency-btn {
       background: #10b981;
-      color: white;
+      color: #ffffff;
       text-decoration: none;
-      padding: 12px 26px;
+      padding: 10px 20px;
       border-radius: 50px;
       font-weight: 700;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      transition: background 0.2s ease;
     }
 
-    /* SECTION TITLES */
+    .emergency-btn:hover {
+      background: #059669;
+    }
+
+    /* SECTION HEADERS */
     .section-header {
       text-align: center;
-      margin: 50px 0 30px 0;
+      margin: 36px 0 20px 0;
     }
 
     .section-tag {
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       color: #38bdf8;
       text-transform: uppercase;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
     .section-title {
-      font-size: 1.8rem;
+      font-size: 1.45rem;
       font-weight: 800;
-      margin: 0;
-      background: linear-gradient(135deg, #fff 0%, #bae6fd 100%);
+      background: linear-gradient(135deg, #ffffff 0%, #bae6fd 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* 9 TA YO'NALISH GRID */
+    /* 9 SERVICES GRID */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
     .service-box {
       background: var(--card-bg);
       border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      padding: 24px;
-      position: relative;
+      border-radius: 16px;
+      padding: 18px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
     }
 
     .service-box:hover {
       border-color: #38bdf8;
-      transform: translateY(-3px);
+      transform: translateY(-2px);
     }
 
     .service-num {
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 800;
       color: #38bdf8;
-      opacity: 0.8;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .service-box h3 {
-      font-size: 1.15rem;
-      margin: 0 0 10px 0;
-      color: #fff;
+      font-size: 1.05rem;
+      color: #ffffff;
+      margin-bottom: 6px;
     }
 
     .service-box p {
-      font-size: 0.9rem;
+      font-size: 0.84rem;
       color: #cbd5e1;
-      line-height: 1.5;
-      margin: 0;
+      line-height: 1.45;
     }
 
-    /* BIO / FOUNDER SECTION */
+    /* BIO SECTION */
     .bio-card {
       background: var(--card-bg);
       border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      padding: 30px 22px;
-      margin: 40px 0;
+      border-radius: 20px;
+      padding: 22px 16px;
+      margin: 32px 0;
     }
 
     .bio-card h3 {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
       color: #38bdf8;
-      margin: 0 0 12px 0;
+      margin-bottom: 10px;
     }
 
     .bio-card p {
       color: #cbd5e1;
-      line-height: 1.6;
-      font-size: 0.95rem;
-      margin-bottom: 12px;
+      line-height: 1.55;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
     }
 
     .bio-list {
       list-style: none;
-      padding: 0;
-      margin: 15px 0 0 0;
+      margin-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
     }
 
     .bio-list li {
-      padding: 6px 0;
       color: #e2e8f0;
-      font-size: 0.92rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 0.84rem;
+      line-height: 1.4;
     }
 
-    /* FAQ ACCORDION */
-    .faq-container {
-      max-width: 800px;
-      margin: 0 auto 50px auto;
-    }
-
-    .faq-item {
-      background: var(--card-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 14px;
-      margin-bottom: 12px;
-      overflow: hidden;
-    }
-
-    .faq-question {
-      padding: 16px 20px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-weight: 700;
-      font-size: 0.95rem;
-      color: #f1f5f9;
-    }
-
-    .faq-answer {
-      padding: 0 20px 16px 20px;
-      color: #cbd5e1;
-      font-size: 0.9rem;
-      line-height: 1.5;
-      display: none;
-    }
-
-    /* APPOINTMENT FORM */
+    /* FORM */
     .form-container {
-      background: linear-gradient(135deg, rgba(2, 132, 199, 0.25) 0%, rgba(15, 23, 42, 0.9) 100%);
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.2) 0%, rgba(15, 23, 42, 0.9) 100%);
       border: 1px solid var(--glass-border);
-      border-radius: 28px;
-      padding: 35px 22px;
-      max-width: 700px;
-      margin: 0 auto 60px auto;
-      text-align: center;
+      border-radius: 22px;
+      padding: 24px 16px;
+      margin: 32px 0;
     }
 
     .form-container h2 {
-      margin: 0 0 10px 0;
-      font-size: 1.6rem;
+      font-size: 1.35rem;
+      margin-bottom: 6px;
+      text-align: center;
     }
 
     .form-container p {
       color: var(--text-muted);
-      margin-bottom: 25px;
-      font-size: 0.92rem;
+      margin-bottom: 18px;
+      font-size: 0.82rem;
+      text-align: center;
+      line-height: 1.4;
     }
 
     .form-group {
-      margin-bottom: 15px;
-      text-align: left;
+      margin-bottom: 14px;
     }
 
     .form-group label {
       display: block;
-      margin-bottom: 6px;
-      font-size: 0.85rem;
+      margin-bottom: 4px;
+      font-size: 0.8rem;
       font-weight: 600;
       color: #e2e8f0;
     }
 
     .form-input, .form-select, .form-textarea {
       width: 100%;
-      padding: 12px 14px;
-      background: rgba(0, 0, 0, 0.4);
+      padding: 10px 12px;
+      background: rgba(0, 0, 0, 0.5);
       border: 1px solid var(--glass-border);
-      border-radius: 12px;
-      color: #fff;
+      border-radius: 10px;
+      color: #ffffff;
       font-family: inherit;
-      font-size: 0.92rem;
+      font-size: 0.88rem;
     }
 
     .form-input:focus, .form-select:focus, .form-textarea:focus {
@@ -477,41 +489,91 @@
     .submit-btn {
       width: 100%;
       background: var(--primary);
-      color: white;
+      color: #ffffff;
       border: none;
-      padding: 14px;
-      border-radius: 12px;
+      padding: 12px;
+      border-radius: 10px;
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.92rem;
       cursor: pointer;
-      box-shadow: 0 8px 25px rgba(2, 132, 199, 0.4);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.4);
+      transition: background 0.2s ease;
     }
 
     .submit-btn:hover {
       background: var(--primary-hover);
     }
 
-    /* FLOATING CHAT */
+    /* FAQ */
+    .faq-container {
+      margin: 32px 0;
+    }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 14px 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #f1f5f9;
+      user-select: none;
+    }
+
+    .faq-question span:last-child {
+      font-size: 1.2rem;
+      line-height: 1;
+      margin-left: 8px;
+    }
+
+    .faq-answer {
+      padding: 0 16px 14px 16px;
+      color: #cbd5e1;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      display: none;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      text-align: center;
+      padding: 24px 0;
+      border-top: 1px solid var(--glass-border);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      line-height: 1.4;
+    }
+
+    /* FLOATING CHAT BUTTON */
     .chat-toggle {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 58px;
-      height: 58px;
+      bottom: 20px;
+      right: 20px;
+      width: 52px;
+      height: 52px;
       background: linear-gradient(135deg, var(--primary-cyan) 0%, var(--primary) 100%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+      box-shadow: 0 8px 24px rgba(6, 182, 212, 0.4);
       cursor: pointer;
       z-index: 1000;
     }
 
     .chat-toggle svg {
-      width: 28px;
-      height: 28px;
-      fill: #fff;
+      width: 24px;
+      height: 24px;
+      fill: #ffffff;
     }
 
     .chat-badge {
@@ -519,11 +581,11 @@
       top: -2px;
       right: -2px;
       background: #ef4444;
-      color: white;
-      font-size: 0.75rem;
+      color: #ffffff;
+      font-size: 0.7rem;
       font-weight: bold;
-      width: 22px;
-      height: 22px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: none;
       align-items: center;
@@ -531,18 +593,19 @@
       border: 2px solid #070d18;
     }
 
+    /* CHAT POPUP */
     .chat-popup {
       position: fixed;
-      bottom: 95px;
-      right: 20px;
-      left: 20px;
-      max-width: 400px;
+      bottom: 82px;
+      right: 16px;
+      left: 16px;
+      max-width: 380px;
       margin: 0 auto;
-      height: 430px;
+      height: 400px;
       background: #0f172a;
       border: 1px solid var(--glass-border);
-      border-radius: 20px;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+      border-radius: 18px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
       z-index: 1000;
       display: none;
       flex-direction: column;
@@ -551,9 +614,9 @@
 
     .chat-header {
       background: linear-gradient(135deg, var(--primary) 0%, #0369a1 100%);
-      color: white;
-      padding: 14px 18px;
-      font-size: 0.95rem;
+      color: #ffffff;
+      padding: 12px 14px;
+      font-size: 0.88rem;
       font-weight: bold;
       display: flex;
       justify-content: space-between;
@@ -563,77 +626,127 @@
     .chat-close {
       background: none;
       border: none;
-      color: white;
-      font-size: 24px;
+      color: #ffffff;
+      font-size: 22px;
       cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
     }
 
     .chat-body {
-      padding: 15px;
+      padding: 12px;
       flex: 1;
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .chat-footer {
-      padding: 12px;
-      background: rgba(0,0,0,0.3);
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.4);
       border-top: 1px solid var(--glass-border);
     }
 
     .chat-footer textarea {
       width: 100%;
-      height: 55px;
-      padding: 10px;
-      background: rgba(255,255,255,0.06);
+      height: 48px;
+      padding: 8px;
+      background: rgba(255, 255, 255, 0.08);
       border: 1px solid var(--glass-border);
-      border-radius: 10px;
-      color: #fff;
+      border-radius: 8px;
+      color: #ffffff;
       resize: none;
       font-family: inherit;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .msg-bubble {
-      padding: 9px 13px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      max-width: 85%;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 0.84rem;
+      max-width: 88%;
       line-height: 1.4;
     }
 
     .msg-user {
       background: var(--primary);
-      color: white;
+      color: #ffffff;
       align-self: flex-end;
       border-bottom-right-radius: 2px;
     }
 
     .msg-doctor {
-      background: rgba(255,255,255,0.1);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
       align-self: flex-start;
       border-bottom-left-radius: 2px;
       border: 1px solid var(--glass-border);
     }
 
-    .site-footer {
-      text-align: center;
-      padding: 30px 0;
-      border-top: 1px solid var(--glass-border);
-      color: var(--text-muted);
-      font-size: 0.85rem;
+    /* TABLET MOSLASHUVI (min-width: 640px) */
+    @media (min-width: 640px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .actions-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .btn-map {
+        grid-column: span 1;
+      }
+      .form-container {
+        padding: 30px;
+        max-width: 620px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .faq-container {
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
+      }
     }
 
-    @media (min-width: 768px) {
-      .hero-grid { grid-template-columns: 1.15fr 0.85fr; }
-      .hero-title { font-size: 2.9rem; }
-      .stats-row { grid-template-columns: repeat(4, 1fr); }
-      .emergency-banner { flex-direction: row; justify-content: space-between; text-align: left; }
-      .chat-popup { right: 30px; left: auto; width: 380px; }
-      .doctor-image-wrapper { max-width: 100%; }
+    /* NOUTBUK VA DESKTOP (min-width: 1024px) */
+    @media (min-width: 1024px) {
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .hero-desc {
+        font-size: 1rem;
+      }
+      .doctor-image-wrapper {
+        max-width: 100%;
+      }
+      .stats-row {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+      }
+      .emergency-banner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+        padding: 22px 30px;
+      }
+      .services-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+      }
+      .actions-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+      .chat-popup {
+        right: 30px;
+        left: auto;
+        width: 380px;
+      }
     }
   </style>
 </head>
@@ -641,9 +754,9 @@
 
   <!-- NAVBAR -->
   <nav class="navbar">
-    <div class="container" style="display:flex; justify-content:space-between; align-items:center; width:100%;">
+    <div class="container navbar-inner">
       <a href="/" class="nav-brand">
-        <span style="font-size: 1.5rem;">🩺</span>
+        <span class="brand-icon">🩺</span>
         <span class="brand-title">Dr. Ulmasbek Vahobjonovich</span>
       </a>
       <a href="tel:+998995958406" class="nav-contact-btn">
@@ -663,7 +776,7 @@
           <div class="hero-badge">🏥 Grand Medikal Markazi · Navoiy</div>
           <h1 class="hero-title">Quloq, burun va tomoq davosida aniq tashxis, ishonchli natija</h1>
           <p class="hero-desc">
-            LOR-xirurg Dr. Ulmasbek Vahobjonovich boshchiligidagi amaliyot — zamonaviy diagnostika, endoskopik xirurgik yechimlar va g'amxo'r munosabat bitta joyda, ota-onadan boshlab bolalarigacha.
+            LOR-xirurg Dr. Ulmasbek Vahobjonovich boshchiligidagi amaliyot — zamonaviy diagnostika, endoskopik xirurgik yechimlar va g'amxo'r munosabat bitta joyda, kattalardan tortib bolalargacha.
           </p>
 
           <!-- TUGMALAR -->
@@ -691,7 +804,7 @@
           </div>
         </div>
 
-        <!-- DOCTOR SURATI (YANGILANGAN BLOK) -->
+        <!-- DOCTOR SURATI -->
         <div class="doctor-image-wrapper">
           <div class="doctor-image-card">
             <img src="photo_2026-11-07_18-36-44.jpg" alt="Dr. Ulmasbek Vahobjonovich - LOR Vrach, Otorinolaringolog">
@@ -727,8 +840,8 @@
       <!-- 24/7 SHOSHILINCH YORDAM BANNERI -->
       <div class="emergency-banner">
         <div>
-          <h3 style="margin:0 0 4px 0; font-size:1.3rem; color:#fff;">🚨 24/7 Shoshilinch LOR Xizmati</h3>
-          <p style="margin:0; font-size:0.9rem; color:#cbd5e1;">Tunda, dam olish va bayram kunlari ham shoshilinch qabul — favqulodda holatda kutish shart emas.</p>
+          <h3>🚨 24/7 Shoshilinch LOR Xizmati</h3>
+          <p>Tunda, dam olish va bayram kunlari ham shoshilinch qabul — favqulodda holatda kutish shart emas.</p>
         </div>
         <a href="tel:+998995958406" class="emergency-btn">Hoziroq bog'laning</a>
       </div>
@@ -798,7 +911,7 @@
         "Har bir bemor uchun aniq tashxis va shaxsiy yondashuv — bizning ishimizning eng asosiy poydevoridir."
       </p>
       <p>
-        Dr. Ulmasbek Vahobjonovich LOR a'zolari kasalliklarini konservativ va xirurgik yo'l bilan davolashda katta klinik amaliyotga ega. Jarrohlik amaliyotlarida eng so'nggi kam invaziv endoskopik uskunalardan foydalanadi, bu esa bemorning juda tez va asoratsiz oyoqqa turishini ta'minlaydi.
+        Dr. Ulmasbek Vahobjonovich LOR a'zolari kasalliklarini konservativ va xirurgik yo'l bilan davolashda katta klinik amaliyotga ega. Jarrohlik amaliyotlarida eng so'nggi kam invaziv endoskopik uskunalardan foydalanadi, bu esa bemorning tez va asoratsiz oyoqqa turishini ta'minlaydi.
       </p>
       <ul class="bio-list">
         <li>✅ <strong>Mutaxassislik:</strong> Otorinolaringologiya, Endoskopik LOR-xirurgiya, Rinoplastika</li>
@@ -815,17 +928,17 @@
 
       <form id="appointmentForm">
         <div class="form-group">
-          <label>Ismingiz</label>
+          <label for="patientName">Ismingiz</label>
           <input type="text" id="patientName" class="form-input" placeholder="Ism va familiyangiz" required>
         </div>
 
         <div class="form-group">
-          <label>Telefon raqamingiz</label>
+          <label for="patientPhone">Telefon raqamingiz</label>
           <input type="tel" id="patientPhone" class="form-input" placeholder="+998 90 123 45 67" required>
         </div>
 
         <div class="form-group">
-          <label>Yo'nalishni tanlang</label>
+          <label for="patientService">Yo'nalishni tanlang</label>
           <select id="patientService" class="form-select">
             <option value="LOR 24/7 Shoshilinch">LOR 24/7 Shoshilinch</option>
             <option value="Septoplastika (Burun to'sig'i)">Septoplastika (Burun to'sig'i)</option>
@@ -839,7 +952,7 @@
         </div>
 
         <div class="form-group">
-          <label>Shikoyatingiz (ixtiyoriy)</label>
+          <label for="patientNote">Shikoyatingiz (ixtiyoriy)</label>
           <textarea id="patientNote" class="form-textarea" placeholder="Sizni nima bezovta qilayotganini yozing..."></textarea>
         </div>
 
@@ -901,7 +1014,7 @@
   <!-- POPUP CHAT -->
   <div class="chat-popup" id="chatPopup">
     <div class="chat-header">
-      <span>💬 Dr. Ulmasbek Vahobjonovich qabulxonasi</span>
+      <span>💬 Qabulxona bilan chat</span>
       <button class="chat-close" onclick="toggleChat()">&times;</button>
     </div>
     <div class="chat-body" id="chatBody">
@@ -915,7 +1028,7 @@
     </div>
   </div>
 
-  <!-- TELEGRAM INTEGRATION JAVASCRIPT -->
+  <!-- JAVASCRIPT LOGIKA -->
   <script>
     const BOT_TOKEN = '8609538485:AAFeTCr4Mel-5m88Nuc_wwXIEFusqLDLnTk';
     const ADMIN_IDS = [6258110646, 7645769320];
