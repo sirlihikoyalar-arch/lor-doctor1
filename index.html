@@ -60,6 +60,37 @@
       padding: 0 16px;
     }
 
+    /* PUSH NOTIFICATION BANNER */
+    .push-banner {
+      display: none;
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+      color: #ffffff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      margin: 16px auto;
+      max-width: 1180px;
+      box-shadow: 0 8px 24px rgba(2, 132, 199, 0.35);
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 0.9rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .push-banner button {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: #fff;
+      font-size: 1.1rem;
+      cursor: pointer;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     /* NAVBAR */
     .navbar {
       width: 100%;
@@ -167,7 +198,7 @@
       margin-bottom: 18px;
     }
 
-    /* DOCTOR PHOTO (TOZA RASM VA SKANER) */
+    /* DOCTOR PHOTO */
     .doctor-image-wrapper {
       width: 100%;
       max-width: 380px;
@@ -570,7 +601,7 @@
       left: 16px;
       max-width: 380px;
       margin: 0 auto;
-      height: 400px;
+      height: 440px;
       background: #0f172a;
       border: 1px solid var(--glass-border);
       border-radius: 18px;
@@ -630,12 +661,20 @@
       font-size: 0.85rem;
     }
 
+    .chat-hint {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      text-align: center;
+    }
+
     .msg-bubble {
       padding: 8px 12px;
       border-radius: 10px;
       font-size: 0.84rem;
       max-width: 88%;
       line-height: 1.4;
+      word-break: break-word;
     }
 
     .msg-user {
@@ -651,6 +690,13 @@
       align-self: flex-start;
       border-bottom-left-radius: 2px;
       border: 1px solid var(--glass-border);
+    }
+
+    .msg-doctor img, .msg-doctor video {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 6px;
+      display: block;
     }
 
     /* TABLET (min-width: 640px) */
@@ -677,7 +723,7 @@
       }
     }
 
-    /* NOUTBUK VA DESKTOP (min-width: 1024px) */
+    /* DESKTOP (min-width: 1024px) */
     @media (min-width: 1024px) {
       .hero-grid {
         display: grid;
@@ -721,6 +767,12 @@
 </head>
 <body>
 
+  <!-- PUSH HABAR BANNERI (VRACH YUBORGANDA CHIQADI) -->
+  <div class="push-banner" id="pushBanner">
+    <span id="pushBannerText"></span>
+    <button onclick="document.getElementById('pushBanner').style.display='none'">&times;</button>
+  </div>
+
   <!-- NAVBAR -->
   <nav class="navbar">
     <div class="container navbar-inner">
@@ -728,8 +780,8 @@
         <span class="brand-icon">🩺</span>
         <span class="brand-title">Dr. Ulmasbek Vahobjonovich</span>
       </a>
-      <a href="tel:+998995958406" class="nav-contact-btn">
-        📞 +998 99 595 84 06
+      <a href="tel:+998906187228" class="nav-contact-btn">
+        📞 +998 90 618 72 28
       </a>
     </div>
   </nav>
@@ -750,11 +802,11 @@
 
           <!-- TUGMALAR -->
           <div class="actions-grid">
-            <a href="tel:+998995958406" class="btn-card btn-call">
+            <a href="tel:+998906187228" class="btn-card btn-call">
               <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
               Qo'ng'iroq
             </a>
-            <a href="https://t.me/dr_ulmas" target="_blank" rel="noopener" class="btn-card btn-tg">
+            <a href="https://t.me/Dr_Ulmasbek_Vahobjonovich_bot" target="_blank" rel="noopener" class="btn-card btn-tg">
               <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
               Telegram
             </a>
@@ -773,7 +825,7 @@
           </div>
         </div>
 
-        <!-- DOCTOR SURATI (HECH QANDAY ORTIQCHA YOZUVSIZ, TOZA QR KODLI FOTO) -->
+        <!-- DOCTOR SURATI -->
         <div class="doctor-image-wrapper">
           <div class="doctor-image-card">
             <img src="photo_2026-11-07_18-36-44.jpg" alt="Dr. Ulmasbek Vahobjonovich - LOR Vrach, Otorinolaringolog">
@@ -808,7 +860,7 @@
           <h3>🚨 24/7 Shoshilinch LOR Xizmati</h3>
           <p>Tunda, dam olish va bayram kunlari ham shoshilinch qabul — favqulodda holatda kutish shart emas.</p>
         </div>
-        <a href="tel:+998995958406" class="emergency-btn">Hoziroq bog'laning</a>
+        <a href="tel:+998906187228" class="emergency-btn">Hoziroq bog'laning</a>
       </div>
     </section>
 
@@ -881,8 +933,8 @@
       <ul class="bio-list">
         <li>✅ <strong>Mutaxassislik:</strong> Otorinolaringologiya, Endoskopik LOR-xirurgiya, Rinoplastika</li>
         <li>✅ <strong>Klinika:</strong> Grand Medikal Markazi (Navoiy)</li>
-        <li>✅ <strong>Aloqa telefon:</strong> +998 99 595 84 06</li>
-        <li>✅ <strong>Telegram:</strong> @dr_ulmas | <strong>Instagram:</strong> @dr._ulmas</li>
+        <li>✅ <strong>Aloqa telefon:</strong> +998 90 618 72 28</li>
+        <li>✅ <strong>Telegram bot:</strong> @Dr_Ulmasbek_Vahobjonovich_bot | <strong>Instagram:</strong> @dr._ulmas</li>
       </ul>
     </section>
 
@@ -899,7 +951,7 @@
 
         <div class="form-group">
           <label for="patientPhone">Telefon raqamingiz</label>
-          <input type="tel" id="patientPhone" class="form-input" placeholder="+998 90 123 45 67" required>
+          <input type="tel" id="patientPhone" class="form-input" placeholder="+998 90 618 72 28" required>
         </div>
 
         <div class="form-group">
@@ -917,7 +969,7 @@
         </div>
 
         <div class="form-group">
-          <label for="patientNote">Shikoyatingiz (ixtiyoriy)</label>
+          <label for="patientNote">Shikoyatingiz (faqat matn shaklida)</label>
           <textarea id="patientNote" class="form-textarea" placeholder="Sizni nima bezovta qilayotganini yozing..."></textarea>
         </div>
 
@@ -938,7 +990,7 @@
           <span>+</span>
         </div>
         <div class="faq-answer">
-          Saytdagi onlayn forma orqali, to'g'ridan-to'g'ri +998 99 595 84 06 raqamiga qo'ng'iroq qilib yoki @dr_ulmas telegram manziliga yozib navbat olishingiz mumkin.
+          Saytdagi onlayn forma orqali, to'g'ridan-to'g'ri +998 90 618 72 28 raqamiga qo'ng'iroq qilib yoki @Dr_Ulmasbek_Vahobjonovich_bot telegram boti orqali navbat olishingiz mumkin.
         </div>
       </div>
 
@@ -970,7 +1022,7 @@
 
   </div>
 
-  <!-- FLOATING TELEGRAM CHAT WIDGET -->
+  <!-- FLOATING CHAT BUTTON -->
   <div class="chat-toggle" onclick="toggleChat()" title="Shifokorga savol berish">
     <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
     <div class="chat-badge" id="chatBadge">0</div>
@@ -983,11 +1035,12 @@
       <button class="chat-close" onclick="toggleChat()">&times;</button>
     </div>
     <div class="chat-body" id="chatBody">
-      <div class="msg-bubble msg-doctor">Assalomu alaykum! Dr. Ulmasbek Vahobjonovich qabulxonasiga xush kelibsiz. Savolingizni yozib qoldirishingiz mumkin.</div>
+      <div class="msg-bubble msg-doctor">Assalomu alaykum! Dr. Ulmasbek Vahobjonovich qabulxonasiga xush kelibsiz. Savolingizni matn ko'rinishida yozib qoldirishingiz mumkin.</div>
     </div>
     <div class="chat-footer">
       <form id="chatForm">
-        <textarea id="chatInput" placeholder="Savolingizni yozing..." required></textarea>
+        <textarea id="chatInput" placeholder="Savolingizni yozing (faqat matn)..." required></textarea>
+        <div class="chat-hint">ℹ️ Bemor faqat matn yozishi mumkin.</div>
         <button type="submit" class="submit-btn" style="margin-top:6px; padding:8px;">Yuborish</button>
       </form>
     </div>
@@ -995,8 +1048,7 @@
 
   <!-- JAVASCRIPT LOGIKA -->
   <script>
-    const BOT_TOKEN = '8609538485:AAFeTCr4Mel-5m88Nuc_wwXIEFusqLDLnTk';
-    const ADMIN_IDS = [6258110646, 7645769320];
+    const BOT_TOKEN = '9181424161:AAEP-_DprKrGiJtb_SS7-XBjFGldugWqJpc';
 
     function toggleFaq(elem) {
       const answer = elem.nextElementSibling;
@@ -1032,11 +1084,30 @@
 
     function renderChat() {
       const chatBody = document.getElementById('chatBody');
-      chatBody.innerHTML = '<div class="msg-bubble msg-doctor">Assalomu alaykum! Dr. Ulmasbek Vahobjonovich qabulxonasiga xush kelibsiz. Savolingizni yozib qoldirishingiz mumkin.</div>';
+      chatBody.innerHTML = '<div class="msg-bubble msg-doctor">Assalomu alaykum! Dr. Ulmasbek Vahobjonovich qabulxonasiga xush kelibsiz. Savolingizni matn ko\'rinishida yozib qoldirishingiz mumkin.</div>';
+      
       chatHistory.forEach(msg => {
         const div = document.createElement('div');
         div.className = `msg-bubble ${msg.sender === 'user' ? 'msg-user' : 'msg-doctor'}`;
-        div.textContent = msg.text;
+        
+        if (msg.text) {
+          const p = document.createElement('p');
+          p.textContent = msg.text;
+          div.appendChild(p);
+        }
+        if (msg.imageUrl) {
+          const img = document.createElement('img');
+          img.src = msg.imageUrl;
+          img.alt = "Shifokor surati";
+          div.appendChild(img);
+        }
+        if (msg.videoUrl) {
+          const vid = document.createElement('video');
+          vid.src = msg.videoUrl;
+          vid.controls = true;
+          div.appendChild(vid);
+        }
+
         chatBody.appendChild(div);
       });
       chatBody.scrollTop = chatBody.scrollHeight;
@@ -1055,6 +1126,27 @@
       }
     }
 
+    // BEMORGA RASM/VIDEO TASHLOVCHI BARCHA HODISALARNI BLOKLASH
+    const chatInput = document.getElementById('chatInput');
+    ['dragenter', 'dragover', 'drop'].forEach(evtName => {
+      chatInput.addEventListener(evtName, e => e.preventDefault());
+    });
+    chatInput.addEventListener('drop', e => {
+      e.preventDefault();
+      alert("Kechirasiz, bemor faqat matn yozishi mumkin. Rasm va video yuborish cheklangan.");
+    });
+    chatInput.addEventListener('paste', e => {
+      const items = (e.clipboardData || window.clipboardData).items;
+      for (let item of items) {
+        if (item.kind === 'file') {
+          e.preventDefault();
+          alert("Kechirasiz, siz faqat matn yozishingiz mumkin. Rasm yoki fayl yuborish mumkin emas.");
+          return;
+        }
+      }
+    });
+
+    // QABULGA YOZILISH FORMASI
     document.getElementById('appointmentForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById('patientName').value.trim();
@@ -1062,92 +1154,220 @@
       const service = document.getElementById('patientService').value;
       const note = document.getElementById('patientNote').value.trim();
 
-      const message = `📋 **YANGI QABULGA YOZILISH!**\n\n` +
-                      `👤 **Bemor:** ${name}\n` +
-                      `📞 **Telefon:** ${phone}\n` +
-                      `🩺 **Yo'nalish:** ${service}\n` +
-                      `📝 **Izoh:** ${note || 'Kiritilmadi'}\n` +
-                      `🆔 **ID:** \`${patientId}\``;
+      const message = `📋 *YANGI QABULGA YOZILISH!*\n\n` +
+                      `👤 *Bemor:* ${name}\n` +
+                      `📞 *Telefon:* ${phone}\n` +
+                      `🩺 *Yo'nalish:* ${service}\n` +
+                      `📝 *Izoh:* ${note || 'Kiritilmadi'}\n` +
+                      `🆔 *ID:* \`${patientId}\``;
 
-      ADMIN_IDS.forEach(chatId => {
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text: message,
-            parse_mode: 'Markdown'
-          })
+      // Botga yangi ariza yuborish (shifokor bevosita mijoz bilan bog'lanishi uchun)
+      fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getUpdates`)
+        .then(res => res.json())
+        .then(data => {
+          let chatIds = new Set();
+          if (data.result) {
+            data.result.forEach(u => {
+              if (u.message && u.message.chat) chatIds.add(u.message.chat.id);
+            });
+          }
+          chatIds.forEach(cId => {
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: cId,
+                text: message,
+                parse_mode: 'Markdown',
+                reply_markup: {
+                  inline_keyboard: [
+                    [{ text: "📞 Telefon qilish", url: `tel:${phone}` }],
+                    [{ text: "🗑 Tarixni tozalash", callback_data: `clear_${patientId}` }]
+                  ]
+                }
+              })
+            });
+          });
         });
-      });
 
       alert("Rahmat! Arizangiz qabul qilindi. Tez orada administrator siz bilan bog'lanadi.");
       this.reset();
     });
 
+    // SAYTDAN SAVOL YUBORISH (FAQAT MATN)
     document.getElementById('chatForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      const text = document.getElementById('chatInput').value.trim();
+      const text = chatInput.value.trim();
       if (!text) return;
 
       chatHistory.push({ sender: 'user', text: text });
       localStorage.setItem('dr_ulmas_chat_' + patientId, JSON.stringify(chatHistory));
       renderChat();
 
-      const tgMsg = `💬 **CHAT SAVOLI (Dr. ULMAS LOR SAYTI)**\n\n🆔 **ID:** \`${patientId}\`\n❓ **Savol:** ${text}\n\n👇 *Javob uchun ushbu xabarga Reply qiling.*`;
+      const tgMsg = `💬 *CHAT SAVOLI (Dr. ULMAS LOR SAYTI)*\n\n🆔 *ID:* \`${patientId}\`\n❓ *Bemor savoli:* ${text}\n\n👇 _Javob uchun xabarga Reply qiling yoki pastdagi tugmani bosing:_`;
 
-      ADMIN_IDS.forEach(chatId => {
-        fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            chat_id: chatId,
-            text: tgMsg,
-            parse_mode: 'Markdown'
-          })
+      fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getUpdates`)
+        .then(res => res.json())
+        .then(data => {
+          let chatIds = new Set();
+          if (data.result) {
+            data.result.forEach(u => {
+              if (u.message && u.message.chat) chatIds.add(u.message.chat.id);
+            });
+          }
+          chatIds.forEach(cId => {
+            fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: cId,
+                text: tgMsg,
+                parse_mode: 'Markdown',
+                reply_markup: {
+                  inline_keyboard: [
+                    [{ text: "✍️ Javob yozish (Reply)", switch_inline_query_current_chat: `ID:${patientId} ` }],
+                    [{ text: "🗑 Chatni tozalash", callback_data: `clear_${patientId}` }]
+                  ]
+                }
+              })
+            });
+          });
         });
-      });
 
-      document.getElementById('chatInput').value = '';
+      chatInput.value = '';
     });
 
+    // TELEGRAMDAN KELGAN XABAR, RASM, VIDEO VA BUYRUQLARNI QABUL QILISH
     let lastUpdateId = parseInt(localStorage.getItem('dr_ulmas_last_upd_' + patientId)) || 0;
+
+    async function getTelegramFileUrl(fileId) {
+      try {
+        const res = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getFile?file_id=${fileId}`);
+        const data = await res.json();
+        if (data.ok && data.result.file_path) {
+          return `https://api.telegram.org/file/bot${BOT_TOKEN}/${data.result.file_path}`;
+        }
+      } catch (e) {
+        console.error(e);
+      }
+      return null;
+    }
 
     function checkDoctorReplies() {
       fetch(`https://api.telegram.org/bot${BOT_TOKEN}/getUpdates?offset=${lastUpdateId}&timeout=5`)
         .then(res => res.json())
-        .then(data => {
+        .then(async data => {
           if (data.ok && data.result.length > 0) {
-            data.result.forEach(update => {
+            for (let update of data.result) {
               lastUpdateId = update.update_id + 1;
               localStorage.setItem('dr_ulmas_last_upd_' + patientId, lastUpdateId);
 
-              if (update.message && update.message.reply_to_message) {
-                const rText = update.message.reply_to_message.text;
-                if (rText && rText.includes(patientId)) {
-                  const replyMsg = update.message.text;
-                  if (replyMsg) {
-                    chatHistory.push({ sender: 'doctor', text: replyMsg });
-                    localStorage.setItem('dr_ulmas_chat_' + patientId, JSON.stringify(chatHistory));
+              // 1. VRACHDAN "CHATNI TOZALASH" TUGMASI (CALLBACK QUERY)
+              if (update.callback_query) {
+                const cbData = update.callback_query.data;
+                if (cbData === `clear_${patientId}`) {
+                  chatHistory = [];
+                  localStorage.removeItem('dr_ulmas_chat_' + patientId);
+                  renderChat();
+                  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      callback_query_id: update.callback_query.id,
+                      text: "Bemor chat tarixi tozalandi!"
+                    })
+                  });
+                }
+                continue;
+              }
 
-                    const popup = document.getElementById('chatPopup');
-                    if (popup.style.display !== 'flex') {
-                      unreadCount++;
-                      localStorage.setItem('dr_ulmas_unread_' + patientId, unreadCount);
-                      updateBadge();
-                    } else {
-                      renderChat();
-                    }
+              const msg = update.message;
+              if (!msg) continue;
+
+              // 2. OPSHI PUSH HABAR (BOTGA: /broadcast Matn)
+              if (msg.text && msg.text.startsWith('/broadcast')) {
+                const broadText = msg.text.replace('/broadcast', '').trim();
+                if (broadText) {
+                  const banner = document.getElementById('pushBanner');
+                  document.getElementById('pushBannerText').textContent = `📢 Shifokor e'loni: ${broadText}`;
+                  banner.style.display = 'flex';
+                }
+                continue;
+              }
+
+              // 3. BUYRUQ ORQALI O'CHIRISH (/clear ID)
+              if (msg.text && msg.text.startsWith('/clear')) {
+                if (msg.text.includes(patientId)) {
+                  chatHistory = [];
+                  localStorage.removeItem('dr_ulmas_chat_' + patientId);
+                  renderChat();
+                }
+                continue;
+              }
+
+              // 4. VRACH REPLY QILIB YUBORGAN JAVOBLAR (MATN, RASM, VIDEO)
+              let targetIdMatches = false;
+              if (msg.reply_to_message) {
+                const rText = msg.reply_to_message.text || msg.reply_to_message.caption || '';
+                if (rText.includes(patientId)) targetIdMatches = true;
+              } else if (msg.text && msg.text.includes(`ID:${patientId}`)) {
+                targetIdMatches = true;
+              }
+
+              if (targetIdMatches) {
+                let doctorMsg = { sender: 'doctor' };
+                let hasContent = false;
+
+                // Matnli xabar
+                if (msg.text) {
+                  doctorMsg.text = msg.text.replace(`ID:${patientId}`, '').trim();
+                  hasContent = true;
+                }
+                if (msg.caption) {
+                  doctorMsg.text = msg.caption;
+                  hasContent = true;
+                }
+
+                // Rasm jo'natilsa
+                if (msg.photo && msg.photo.length > 0) {
+                  const largestPhoto = msg.photo[msg.photo.length - 1];
+                  const url = await getTelegramFileUrl(largestPhoto.file_id);
+                  if (url) {
+                    doctorMsg.imageUrl = url;
+                    hasContent = true;
+                  }
+                }
+
+                // Video jo'natilsa
+                if (msg.video) {
+                  const url = await getTelegramFileUrl(msg.video.file_id);
+                  if (url) {
+                    doctorMsg.videoUrl = url;
+                    hasContent = true;
+                  }
+                }
+
+                if (hasContent) {
+                  chatHistory.push(doctorMsg);
+                  localStorage.setItem('dr_ulmas_chat_' + patientId, JSON.stringify(chatHistory));
+
+                  const popup = document.getElementById('chatPopup');
+                  if (popup.style.display !== 'flex') {
+                    unreadCount++;
+                    localStorage.setItem('dr_ulmas_unread_' + patientId, unreadCount);
+                    updateBadge();
+                  } else {
+                    renderChat();
                   }
                 }
               }
-            });
+            }
           }
         })
         .catch(err => console.error(err));
     }
 
-    setInterval(checkDoctorReplies, 4000);
+    setInterval(checkDoctorReplies, 3500);
   </script>
 </body>
 </html>
