@@ -51,6 +51,12 @@
       line-height: 1.5;
       overflow-x: hidden;
       word-wrap: break-word;
+      top: 0px !important;
+    }
+
+    /* GOOGLE TRANSLATE TOP PANELINI YASHIRISH */
+    .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon, .VIpgJd-ZVi9od-ORHb-OEVmcd {
+      display: none !important;
     }
 
     .container {
@@ -108,7 +114,8 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px 0;
-      gap: 12px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .nav-brand {
@@ -125,7 +132,7 @@
     }
 
     .brand-title {
-      font-size: 1.05rem;
+      font-size: 1.02rem;
       font-weight: 800;
       letter-spacing: -0.3px;
       background: linear-gradient(135deg, #ffffff 0%, #38bdf8 100%);
@@ -136,13 +143,42 @@
       text-overflow: ellipsis;
     }
 
+    .nav-right-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-switcher {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .lang-btn {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      color: #ffffff;
+      padding: 5px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.72rem;
+      font-weight: 700;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lang-btn:hover {
+      background: var(--primary);
+      border-color: #38bdf8;
+    }
+
     .nav-contact-btn {
       background: var(--primary);
       color: #ffffff;
       text-decoration: none;
-      padding: 8px 14px;
+      padding: 7px 12px;
       border-radius: 50px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
       white-space: nowrap;
       flex-shrink: 0;
@@ -778,13 +814,26 @@
     <div class="container navbar-inner">
       <a href="/" class="nav-brand">
         <span class="brand-icon">🩺</span>
-        <span class="brand-title">Dr. Ulmasbek Vahobjonovich</span>
+        <span class="brand-title notranslate">Dr. Ulmasbek Vahobjonovich</span>
       </a>
-      <a href="tel:+998906187228" class="nav-contact-btn">
-        📞 +998 90 618 72 28
-      </a>
+      
+      <div class="nav-right-group">
+        <!-- TIL TANLASH TUGMALARI (UZ / RU / EN) -->
+        <div class="lang-switcher notranslate">
+          <button type="button" class="lang-btn" onclick="changeLang('uz')">UZ</button>
+          <button type="button" class="lang-btn" onclick="changeLang('ru')">RU</button>
+          <button type="button" class="lang-btn" onclick="changeLang('en')">EN</button>
+        </div>
+
+        <a href="tel:+998906187228" class="nav-contact-btn notranslate">
+          📞 +998 90 618 72 28
+        </a>
+      </div>
     </div>
   </nav>
+
+  <!-- YASHIRIN GOOGLE TRANSLATE ELEMENTI -->
+  <div id="google_translate_element" style="display:none;"></div>
 
   <div class="container">
 
@@ -806,7 +855,6 @@
               <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
               Qo'ng'iroq
             </a>
-            <!-- TELEGRAM LICHKAGA YO'NALTIRILGAN HAVOLA -->
             <a href="https://t.me/+998906187228" target="_blank" rel="noopener" class="btn-card btn-tg">
               <svg viewBox="0 0 24 24"><path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/></svg>
               Telegram Lichka
@@ -1046,6 +1094,32 @@
       </form>
     </div>
   </div>
+
+  <!-- GOOGLE TRANSLATE SKRIPTI -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'uz',
+        includedLanguages: 'uz,ru,en',
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+
+    function changeLang(lang) {
+      if (lang === 'uz') {
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + location.hostname + ";";
+        location.reload();
+        return;
+      }
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        select.value = lang;
+        select.dispatchEvent(new Event('change'));
+      }
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
   <!-- JAVASCRIPT LOGIKA -->
   <script>
