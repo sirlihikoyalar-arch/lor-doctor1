@@ -52,11 +52,18 @@
       overflow-x: hidden;
       word-wrap: break-word;
       top: 0px !important;
+      position: static !important;
     }
 
-    /* GOOGLE TRANSLATE TOP PANELINI YASHIRISH */
-    .goog-te-banner-frame.skiptranslate, .goog-te-gadget-icon, .VIpgJd-ZVi9od-ORHb-OEVmcd {
+    /* GOOGLE TRANSLATE TOP PANELINI TO'LIQ YASHIRISH */
+    .goog-te-banner-frame.skiptranslate,
+    .goog-te-gadget-icon,
+    .VIpgJd-ZVi9od-ORHb-OEVmcd,
+    .skiptranslate > iframe,
+    #goog-gt-tt,
+    .goog-te-balloon-frame {
       display: none !important;
+      visibility: hidden !important;
     }
 
     .container {
@@ -150,26 +157,40 @@
     }
 
     .lang-switcher {
-      display: flex;
+      display: inline-flex;
       gap: 4px;
       align-items: center;
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 3px 5px;
+      border-radius: 50px;
+    }
+
+    .lang-globe {
+      width: 15px;
+      height: 15px;
+      fill: #38bdf8;
+      margin-left: 3px;
+      margin-right: 1px;
+      flex-shrink: 0;
     }
 
     .lang-btn {
-      background: rgba(56, 189, 248, 0.12);
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      color: #ffffff;
-      padding: 5px 8px;
-      border-radius: 8px;
+      background: transparent;
+      border: none;
+      color: #e2e8f0;
+      padding: 4px 8px;
+      border-radius: 50px;
       cursor: pointer;
       font-size: 0.72rem;
-      font-weight: 700;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      font-weight: 800;
+      transition: all 0.2s ease;
     }
 
-    .lang-btn:hover {
+    .lang-btn:hover, .lang-btn.active {
       background: var(--primary);
-      border-color: #38bdf8;
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.5);
     }
 
     .nav-contact-btn {
@@ -819,10 +840,13 @@
       
       <div class="nav-right-group">
         <!-- TIL TANLASH TUGMALARI (UZ / RU / EN) -->
-        <div class="lang-switcher notranslate">
-          <button type="button" class="lang-btn" onclick="changeLang('uz')">UZ</button>
-          <button type="button" class="lang-btn" onclick="changeLang('ru')">RU</button>
-          <button type="button" class="lang-btn" onclick="changeLang('en')">EN</button>
+        <div class="lang-switcher notranslate" title="Tilni tanlang / Выберите язык / Select language">
+          <svg class="lang-globe" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+          <button type="button" class="lang-btn" id="btn-uz" onclick="changeLang('uz')">UZ</button>
+          <button type="button" class="lang-btn" id="btn-ru" onclick="changeLang('ru')">RU</button>
+          <button type="button" class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
         </div>
 
         <a href="tel:+998906187228" class="nav-contact-btn notranslate">
@@ -1095,7 +1119,7 @@
     </div>
   </div>
 
-  <!-- GOOGLE TRANSLATE SKRIPTI -->
+  <!-- GOOGLE TRANSLATE SKRIPTI (QAT'IY TIL BOSHQARUVI BILAN) -->
   <script>
     function googleTranslateElementInit() {
       new google.translate.TranslateElement({
@@ -1105,19 +1129,59 @@
       }, 'google_translate_element');
     }
 
+    function wipeAllGoogleCookies() {
+      const host = location.hostname;
+      const parts = host.split('.');
+      const domains = ['', host, '.' + host];
+      if (parts.length >= 2) {
+        domains.push('.' + parts.slice(-2).join('.'));
+      }
+      const paths = ['/', location.pathname];
+      domains.forEach(d => {
+        paths.forEach(p => {
+          const domAttr = d ? `; domain=${d}` : '';
+          document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=${p}${domAttr}`;
+        });
+      });
+    }
+
+    function setActiveButton(lang) {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      const btn = document.getElementById('btn-' + lang);
+      if (btn) btn.classList.add('active');
+    }
+
     function changeLang(lang) {
+      localStorage.setItem('selected_site_lang', lang);
+      setActiveButton(lang);
+
       if (lang === 'uz') {
-        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=" + location.hostname + ";";
-        location.reload();
+        wipeAllGoogleCookies();
+        window.location.href = window.location.pathname + window.location.search;
         return;
       }
+
+      wipeAllGoogleCookies();
+      document.cookie = `googtrans=/uz/${lang}; path=/`;
+
       const select = document.querySelector('.goog-te-combo');
       if (select) {
         select.value = lang;
         select.dispatchEvent(new Event('change'));
+      } else {
+        window.location.reload();
       }
     }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedLang = localStorage.getItem('selected_site_lang') || 'uz';
+      if (savedLang === 'uz') {
+        wipeAllGoogleCookies();
+        setActiveButton('uz');
+      } else {
+        setActiveButton(savedLang);
+      }
+    });
   </script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
